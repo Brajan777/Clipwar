@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLIPWAR | La Forja Maya de Contenido Viral</title>
+
+    <!-- SEO & Open Graph -->
+    <meta name="description" content="CLIPWAR: Ejército de cliperos en Guatemala, El Salvador y Honduras. Convertimos 15 minutos de tu semana —o tus podcasts y productos— en 30 a 60+ clips al mes para atraer clientes a tu WhatsApp.">
+    <meta name="keywords" content="ClipWar, cliperos, Guatemala, El Salvador, Honduras, Triángulo Norte, edición de videos cortos, TikTok, Reels, YouTube Shorts, contenido viral, anuncios UGC">
+    <meta name="author" content="CLIPWAR • Triángulo Norte">
+    <meta name="theme-color" content="#0D0C11">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CLIPWAR">
+    <meta property="og:locale" content="es_GT">
+    <meta property="og:title" content="CLIPWAR | Multiplica tus Clips y Llena tu WhatsApp de Clientes">
+    <meta property="og:description" content="Producción semanal de clips cortos para TikTok, Reels y Shorts para marcas y negocios en Guatemala, El Salvador y Honduras.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CLIPWAR | La Forja Maya de Contenido Viral">
+    <meta name="twitter:description" content="Convertimos 15 minutos de tu semana en 30 a 60+ clips optimizados para retención y ventas en WhatsApp.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Bebas Neue / Plus Jakarta Sans / Syne para estética geométrica y audaz -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Bebas Neue"', 'sans-serif'],
+                        heading: ['"Syne"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: '#0D0C11',
+                        basalt: '#17161F',
+                        jade: '#00C896',
+                        jadeDark: '#008F6B',
+                        quetzal: '#00E5A8',
+                        terracotta: '#E84A27',
+                        crimson: '#C81D25',
+                        gold: '#F5B700',
+                        parchment: '#F4EFE6',
+                        stone: '#2B2938'
+                    },
+                    boxShadow: {
+                        'hard': '6px 6px 0px 0px #0D0C11',
+                        'hard-jade': '6px 6px 0px 0px #00C896',
+                        'hard-gold': '6px 6px 0px 0px #F5B700',
+                        'hard-terracotta': '6px 6px 0px 0px #E84A27',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilo 2D vector art sin bordes suaves excesivos: cortes angulares, bloques sólidos y texturas geométricas */
+        body {
+            background-color: #0D0C11;
+            color: #F4EFE6;
+            overflow-x: hidden;
+        }
+
+        /* Patrón de grecas mayas SVG en fondo */
+        .maya-grid-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0V0zm10 10v40h40V10H10zm10 10h20v20H20V20zm5 5v10h10V25H25z' fill='%2317161F' fill-opacity='0.65' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        /* Cielo estilo Samurai Jack (Atardecer carmesí / oro / obsidiana) */
+        .jack-sky-gradient {
+            background: linear-gradient(180deg, #C81D25 0%, #E84A27 38%, #F5B700 72%, #17161F 72.3%, #0D0C11 100%);
+        }
+
+        /* Franja textil típica guatemalteca vectorizada */
+        .huipil-stripe {
+            height: 14px;
+            background: repeating-linear-gradient(
+                90deg,
+                #E84A27 0px, #E84A27 16px,
+                #F5B700 16px, #F5B700 32px,
+                #00C896 32px, #00C896 48px,
+                #F4EFE6 48px, #F4EFE6 56px,
+                #C81D25 56px, #C81D25 72px
+            );
+        }
+
+        /* Corte angular tipo espada / estela maya */
+        .clip-blade {
+            clip-path: polygon(0 0, 100% 0, 96% 100%, 0% 100%);
+        }
+        
+        .clip-pyramid {
+            clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
+        }
+
+        /* Animación sutil flotante para elementos 2D */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+
+        /* Destello de corte de espada (Slash effect) */
+        @keyframes slashSweep {
+            0% { transform: translateX(-120%) skewX(-25deg); opacity: 0; }
+            50% { opacity: 0.85; }
+            100% { transform: translateX(220%) skewX(-25deg); opacity: 0; }
+        }
+        .btn-slash {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-slash::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            transform: translateX(-120%) skewX(-25deg);
+        }
+        .btn-slash:hover::after {
+            animation: slashSweep 0.65s ease-out;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-jade selection:text-obsidian">
+
+    <!-- BANDA SUPERIOR TEXTIL MAYA -->
+    <div class="huipil-stripe w-full border-b-4 border-obsidian" aria-hidden="true"></div>
+
+    <!-- NAVEGACIÓN PRINCIPAL -->
+    <header class="sticky top-0 z-40 bg-obsidian/95 backdrop-blur-md border-b-4 border-stone">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+            <!-- Logo CLIPWAR 2D -->
+            <a href="#" class="flex items-center gap-3 group shrink-0">
+                <div class="w-11 h-11 sm:w-12 sm:h-12 bg-jade border-2 border-parchment rounded-lg flex items-center justify-center shadow-hard-terracotta group-hover:rotate-3 transition-transform">
+                    <!-- Icono Glifo + Cuchilla de Obsidiana -->
+                    <svg class="w-8 h-8 text-obsidian" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M20 3L35 12V28L20 37L5 28V12L20 3Z" fill="#0D0C11"/>
+                        <path d="M20 7L31 13.5V26.5L20 33L9 26.5V13.5L20 7Z" fill="#00C896"/>
+                        <path d="M11 27L29 11L25 23L15 29L11 27Z" fill="#F4EFE6"/>
+                        <circle cx="20" cy="20" r="3" fill="#E84A27"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-display text-3xl sm:text-4xl tracking-wider text-parchment leading-none block">CLIP<span class="text-jade">WAR</span></span>
+                    <span class="text-[10px] uppercase tracking-[0.22em] text-gold font-bold block -mt-1">GT • SV • HN | Red de Corte</span>
+                </div>
+            </a>
+
+            <!-- Enlaces Desktop -->
+            <nav aria-label="Navegación principal" class="hidden md:flex items-center gap-5 lg:gap-8 font-bold text-xs lg:text-sm uppercase tracking-wider">
+                <a href="#problema-solucion" class="text-parchment/80 hover:text-terracotta transition-colors">¿Por qué Clips?</a>
+                <a href="#como-funciona" class="text-parchment/80 hover:text-jade transition-colors">El Ritual</a>
+                <a href="#anatomia" class="text-parchment/80 hover:text-gold transition-colors">Anatomía Viral</a>
+                <a href="#paquetes" class="text-parchment/80 hover:text-jade transition-colors">Planes B2B</a>
+                <a href="#cliperos" class="text-parchment/80 hover:text-gold transition-colors">Sé Clipero</a>
+                <a href="#faq" class="text-parchment/80 hover:text-parchment transition-colors">FAQ</a>
+            </nav>
+
+            <!-- CTA Nav + Botón Hamburguesa Móvil -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button type="button" onclick="openModal('clipero')" class="hidden sm:inline-flex px-4 py-2.5 bg-basalt hover:bg-stone text-parchment font-bold text-xs uppercase tracking-wider border-2 border-parchment rounded-lg transition-all">
+                    Unirme como Clipero
+                </button>
+                <button type="button" onclick="openModal('marca')" class="btn-slash px-3.5 sm:px-5 py-2.5 bg-jade hover:bg-quetzal text-obsidian font-extrabold text-xs sm:text-sm uppercase tracking-wider border-2 border-obsidian rounded-lg shadow-hard-gold transition-transform active:translate-y-0.5">
+                    Quiero Más Clientes
+                </button>
+                <button
+                    type="button"
+                    id="mobile-menu-toggle"
+                    onclick="toggleMobileMenu()"
+                    aria-label="Abrir menú de navegación"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    class="md:hidden w-11 h-11 bg-basalt hover:bg-stone text-parchment border-2 border-parchment rounded-lg flex items-center justify-center transition-colors"
+                >
+                    <svg id="mobile-menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                    <svg id="mobile-menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <nav id="mobile-menu" aria-label="Navegación móvil" class="hidden md:hidden bg-basalt border-t-2 border-stone px-4 py-5 space-y-2">
+            <a href="#problema-solucion" onclick="closeMobileMenu()" class="block px-4 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider text-parchment hover:bg-obsidian hover:text-terracotta transition-colors">¿Por qué Clips?</a>
+            <a href="#como-funciona" onclick="closeMobileMenu()" class="block px-4 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider text-parchment hover:bg-obsidian hover:text-jade transition-colors">El Ritual</a>
+            <a href="#anatomia" onclick="closeMobileMenu()" class="block px-4 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider text-parchment hover:bg-obsidian hover:text-gold transition-colors">Anatomía Viral</a>
+            <a href="#paquetes" onclick="closeMobileMenu()" class="block px-4 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider text-parchment hover:bg-obsidian hover:text-jade transition-colors">Planes B2B</a>
+            <a href="#cliperos" onclick="closeMobileMenu()" class="block px-4 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider text-parchment hover:bg-obsidian hover:text-gold transition-colors">Sé Clipero</a>
+            <a href="#faq" onclick="closeMobileMenu()" class="block px-4 py-2.5 rounded-lg font-bold text-sm uppercase tracking-wider text-parchment hover:bg-obsidian hover:text-jade transition-colors">FAQ</a>
+            <div class="pt-3 border-t-2 border-stone flex flex-col gap-2 sm:hidden">
+                <button type="button" onclick="closeMobileMenu(); openModal('clipero')" class="w-full py-3 bg-obsidian text-parchment font-bold text-xs uppercase tracking-wider border-2 border-gold rounded-lg">
+                    Unirme como Clipero
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+    <!-- HERO SECTION: ESTILO SAMURAI JACK + TIKAL / GUATEMALA 2D -->
+    <section class="relative jack-sky-gradient border-b-4 border-obsidian overflow-hidden pt-10 pb-16 lg:pt-16 lg:pb-24">
+        
+        <!-- Sol Gigante Geométrico Estilo Samurai Jack con Glifos Mayas -->
+        <div class="absolute top-6 right-[-60px] sm:right-10 lg:right-24 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-parchment/95 border-8 border-obsidian pointer-events-none flex items-center justify-center opacity-95" aria-hidden="true">
+            <div class="w-56 h-56 sm:w-72 sm:h-72 rounded-full border-4 border-dashed border-terracotta/40 flex items-center justify-center">
+                <div class="w-36 h-36 sm:w-48 sm:h-48 rounded-full border-4 border-gold/50"></div>
+            </div>
+        </div>
+
+        <!-- Silueta Vectorial 2D de Templo Maya (Gran Jaguar) y Volcanes de Guatemala al fondo -->
+        <div class="absolute inset-x-0 bottom-0 pointer-events-none select-none overflow-hidden" aria-hidden="true">
+            <svg class="w-full h-64 sm:h-80 lg:h-96 object-cover" viewBox="0 0 1440 360" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Volcanes de Agua y Fuego en planos 2D sin contorno -->
+                <path d="M-50 360L220 120L460 360H-50Z" fill="#23192D"/>
+                <path d="M280 360L540 150L810 360H280Z" fill="#1B1424"/>
+                <!-- Templo Maya Escalonado (Tikal) Silueta 2D -->
+                <g transform="translate(860, 45)">
+                    <!-- Crestería -->
+                    <rect x="135" y="0" width="70" height="35" fill="#0D0C11"/>
+                    <rect x="148" y="8" width="12" height="18" fill="#E84A27"/>
+                    <rect x="180" y="8" width="12" height="18" fill="#E84A27"/>
+                    <!-- Santuario superior -->
+                    <rect x="120" y="35" width="100" height="32" fill="#17161F"/>
+                    <rect x="160" y="45" width="20" height="22" fill="#00C896"/>
+                    <!-- Cuerpo escalonado pirámide -->
+                    <polygon points="100,67 240,67 260,105 80,105" fill="#0D0C11"/>
+                    <polygon points="75,105 265,105 290,148 50,148" fill="#17161F"/>
+                    <polygon points="45,148 295,148 325,195 15,195" fill="#0D0C11"/>
+                    <polygon points="10,195 330,195 365,255 -25,255" fill="#17161F"/>
+                    <!-- Escalinata central -->
+                    <polygon points="145,67 195,67 225,255 115,255" fill="#2B2938"/>
+                    <line x1="142" y1="90" x2="198" y2="90" stroke="#0D0C11" stroke-width="4"/>
+                    <line x1="138" y1="120" x2="202" y2="120" stroke="#0D0C11" stroke-width="4"/>
+                    <line x1="133" y1="150" x2="207" y2="150" stroke="#0D0C11" stroke-width="4"/>
+                    <line x1="128" y1="180" x2="212" y2="180" stroke="#0D0C11" stroke-width="4"/>
+                    <line x1="122" y1="210" x2="218" y2="210" stroke="#0D0C11" stroke-width="4"/>
+                </g>
+                <!-- Suelo de obsidiana -->
+                <rect y="280" width="1440" height="80" fill="#0D0C11"/>
+            </svg>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Columna Izquierda: Copy Principal -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-obsidian text-parchment px-4 py-1.5 rounded-lg border-2 border-gold shadow-hard">
+                        <span class="w-2.5 h-2.5 rounded-full bg-jade animate-ping"></span>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-gold">Ejército de Cliperos • Guatemala, El Salvador &amp; Honduras</span>
+                    </div>
+
+                    <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.92] text-parchment drop-shadow-[4px_4px_0px_#0D0C11]">
+                        MULTIPLICA TUS CLIPS.<br>
+                        <span class="text-jade bg-obsidian px-3 py-1 inline-block mt-1 border-2 border-parchment rounded-lg shadow-hard-terracotta">LLENA TU WHATSAPP DE CLIENTES.</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl font-semibold text-parchment bg-obsidian/90 p-5 rounded-xl border-2 border-parchment/80 shadow-hard max-w-2xl leading-relaxed">
+                        Convertimos <span class="text-gold font-extrabold">15 minutos de tu semana</span> —o tus podcasts, eventos y productos— en <span class="text-jade font-extrabold">30 a 60+ videos cortos al mes</span>, publicados en lotes semanales en TikTok, Reels y Shorts para marcas de Guatemala, El Salvador y Honduras.
+                    </p>
+
+                    <!-- Botones de Acción Dual (B2B vs Cliperos) -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                        <button type="button" onclick="openModal('marca')" class="btn-slash px-7 py-4 bg-jade hover:bg-quetzal text-obsidian font-heading font-extrabold text-base uppercase tracking-wider rounded-xl border-4 border-obsidian shadow-hard flex items-center justify-center gap-3 transition-transform hover:-translate-y-1">
+                            <span>Cotizar Mi Plan de Clips</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                        </button>
+
+                        <button type="button" onclick="openModal('clipero')" class="px-7 py-4 bg-obsidian hover:bg-basalt text-parchment font-heading font-extrabold text-base uppercase tracking-wider rounded-xl border-4 border-gold shadow-hard-gold flex items-center justify-center gap-3 transition-transform hover:-translate-y-1">
+                            <span>Postularme como Clipero</span>
+                            <span class="bg-terracotta text-parchment text-xs px-2 py-0.5 rounded font-sans">PAGO X CLIPS</span>
+                        </button>
+                    </div>
+
+                    <!-- Métricas Rápidas -->
+                    <div class="grid grid-cols-3 gap-3 sm:gap-6 pt-4 max-w-xl">
+                        <div class="bg-obsidian/95 border-2 border-stone p-3 rounded-xl text-center">
+                            <div class="font-display text-3xl sm:text-4xl text-jade">+12M</div>
+                            <div class="text-[11px] uppercase tracking-wider text-parchment/70 font-bold">Vistas Orgánicas</div>
+                        </div>
+                        <div class="bg-obsidian/95 border-2 border-stone p-3 rounded-xl text-center">
+                            <div class="font-display text-3xl sm:text-4xl text-gold">45+</div>
+                            <div class="text-[11px] uppercase tracking-wider text-parchment/70 font-bold">Cliperos Activos</div>
+                        </div>
+                        <div class="bg-obsidian/95 border-2 border-stone p-3 rounded-xl text-center">
+                            <div class="font-display text-3xl sm:text-4xl text-terracotta">48h</div>
+                            <div class="text-[11px] uppercase tracking-wider text-parchment/70 font-bold">Primer Lote Listo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Ilustración 2D Estilo Samurai Jack / Guerrero Maya Editor -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md bg-obsidian border-4 border-parchment rounded-2xl p-6 shadow-hard-jade animate-float">
+                        <!-- Etiqueta superior estilo anime/cartoon -->
+                        <div class="flex items-center justify-between border-b-2 border-stone pb-3 mb-4">
+                            <span class="font-mono text-xs font-bold text-jade uppercase tracking-widest">● CANAL SATÉLITE #04</span>
+                            <span class="bg-terracotta text-parchment text-xs font-extrabold px-2.5 py-0.5 rounded uppercase">VIRAL +480K</span>
+                        </div>
+
+                        <!-- Arte Vectorial 2D Personaje Guerrero Maya con Espada de Obsidiana (Macuahuitl) -->
+                        <div class="relative bg-gradient-to-b from-crimson via-terracotta to-gold rounded-xl border-2 border-obsidian overflow-hidden h-72 flex items-end justify-center">
+                            <!-- Rayos de acción 2D -->
+                            <svg class="w-full h-full" viewBox="0 0 360 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <!-- Líneas cinéticas estilo Samurai Jack -->
+                                <line x1="0" y1="40" x2="360" y2="15" stroke="#F4EFE6" stroke-width="2" stroke-opacity="0.35"/>
+                                <line x1="0" y1="90" x2="360" y2="75" stroke="#F4EFE6" stroke-width="3" stroke-opacity="0.25"/>
+                                <line x1="0" y1="150" x2="360" y2="135" stroke="#0D0C11" stroke-width="2" stroke-opacity="0.3"/>
+                                
+                                <!-- Penacho de Quetzal 2D -->
+                                <path d="M135 110C100 65 115 25 165 20C145 45 148 75 160 105Z" fill="#00C896"/>
+                                <path d="M165 100C155 45 185 10 230 18C205 42 195 72 190 100Z" fill="#00E5A8"/>
+                                <path d="M192 105C205 55 245 35 275 55C245 68 225 85 212 110Z" fill="#008F6B"/>
+                                
+                                <!-- Máscara / Rostro geométrico 2D sin contorno suave -->
+                                <polygon points="145,105 215,105 222,165 180,185 138,165" fill="#17161F"/>
+                                <!-- Orejeras de Jade -->
+                                <circle cx="132" cy="145" r="14" fill="#00C896"/>
+                                <circle cx="132" cy="145" r="5" fill="#F5B700"/>
+                                <circle cx="228" cy="145" r="14" fill="#00C896"/>
+                                <circle cx="228" cy="145" r="5" fill="#F5B700"/>
+                                
+                                <!-- Ojos afilados estilo Samurai Jack -->
+                                <polygon points="150,132 174,140 152,144" fill="#F4EFE6"/>
+                                <polygon points="210,132 186,140 208,144" fill="#F4EFE6"/>
+                                
+                                <!-- Capa / Poncho Maya -->
+                                <polygon points="110,185 250,185 295,280 65,280" fill="#0D0C11"/>
+                                <polygon points="135,185 225,185 245,280 115,280" fill="#F4EFE6"/>
+                                <!-- Detalle textil en pecho -->
+                                <rect x="145" y="210" width="70" height="14" fill="#E84A27"/>
+                                <rect x="145" y="232" width="70" height="10" fill="#00C896"/>
+                                
+                                <!-- Macuahuitl (Espada Maya con navajas de obsidiana / línea de tiempo de edición) -->
+                                <g transform="rotate(-18 265 175)">
+                                    <rect x="255" y="65" width="22" height="190" rx="3" fill="#8C5230"/>
+                                    <!-- Navajas de obsidiana (cortes de clip) -->
+                                    <polygon points="243,80 255,75 255,95 243,90" fill="#0D0C11"/>
+                                    <polygon points="243,115 255,110 255,130 243,125" fill="#0D0C11"/>
+                                    <polygon points="243,150 255,145 255,165 243,160" fill="#0D0C11"/>
+                                    <polygon points="277,80 289,75 289,95 277,90" fill="#0D0C11"/>
+                                    <polygon points="277,115 289,110 289,130 277,125" fill="#0D0C11"/>
+                                    <polygon points="277,150 289,145 289,165 277,160" fill="#0D0C11"/>
+                                </g>
+                            </svg>
+
+                            <!-- Badge flotante inferior -->
+                            <div class="absolute bottom-3 left-3 right-3 bg-obsidian/95 border-2 border-jade px-3 py-2 rounded-lg flex items-center justify-between">
+                                <div class="text-xs font-bold text-parchment">Retención promedio: <span class="text-jade">78.4%</span></div>
+                                <div class="text-xs font-extrabold text-gold">00:34s CLIP</div>
+                            </div>
+                        </div>
+
+                        <!-- Barra de progreso de corte -->
+                        <div class="mt-4 space-y-2">
+                            <div class="flex justify-between text-xs font-bold uppercase tracking-wider text-parchment/80">
+                                <span>Frecuencia de disparo</span>
+                                <span class="text-jade">60 Clips / Mes</span>
+                            </div>
+                            <div class="w-full h-3 bg-stone rounded-full overflow-hidden border border-obsidian">
+                                <div class="h-full bg-gradient-to-r from-jade via-gold to-terracotta w-[88%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BANDA DIVISORIA TEXTIL -->
+    <div class="huipil-stripe w-full border-b-4 border-obsidian" aria-hidden="true"></div>
+
+    <!-- BARRA DE INDUSTRIAS & ALCANCE (ESTILO LUMINA 2D) -->
+    <div class="bg-obsidian border-b-4 border-stone py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-center sm:justify-between gap-4 text-[11px] sm:text-xs font-extrabold uppercase tracking-widest text-parchment/70">
+            <span class="text-jade">● INDUSTRIAS ACTIVAS GT • SV • HN:</span>
+            <span>Clínicas &amp; Salud</span>
+            <span class="text-stone">•</span>
+            <span>Bienes Raíces</span>
+            <span class="text-stone">•</span>
+            <span>E-Commerce COD</span>
+            <span class="text-stone">•</span>
+            <span>Podcasts &amp; Creadores</span>
+            <span class="text-stone">•</span>
+            <span>Lanzamientos</span>
+        </div>
+    </div>
+
+    <!-- SECCIÓN: EL PROBLEMA VS. LA SOLUCIÓN CLIPWAR -->
+    <section id="problema-solucion" class="py-20 bg-basalt border-b-4 border-stone">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-xs font-extrabold uppercase tracking-[0.25em] text-terracotta bg-obsidian px-4 py-1.5 rounded-full border border-terracotta">Diagnóstico del Mercado</span>
+                <h2 class="font-display text-5xl sm:text-6xl text-parchment mt-4 tracking-wide">PUBLICAR 3 VIDEOS A LA SEMANA <span class="text-terracotta">YA NO ES SUFICIENTE</span></h2>
+                <p class="text-parchment/80 mt-3 text-base sm:text-lg">
+                    El algoritmo moderno premia el volumen con retención. Si tu marca depende de una sola cuenta o un editor lento, estás perdiendo territorio frente a tu competencia.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                <!-- Camino Tradicional (Lento) -->
+                <div class="bg-obsidian/80 border-4 border-stone rounded-2xl p-8 relative">
+                    <div class="flex items-center justify-between border-b-2 border-stone pb-4 mb-6">
+                        <span class="font-display text-3xl text-parchment/60 tracking-wider">EL MÉTODO TRADICIONAL</span>
+                        <span class="bg-stone text-parchment/70 text-xs font-extrabold px-3 py-1 rounded uppercase">Obsolento</span>
+                    </div>
+                    <ul class="space-y-4 text-sm sm:text-base text-parchment/70">
+                        <li class="flex items-start gap-3">
+                            <span class="text-crimson font-extrabold text-xl leading-none">✕</span>
+                            <span><strong>1 solo editor freelance</strong> que tarda días en entregar y no entiende de retención viral ni ganchos psicológicos.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-crimson font-extrabold text-xl leading-none">✕</span>
+                            <span><strong>Horas de contenido muerto:</strong> grabas podcasts, streams o eventos de 1 hora que apenas ven 300 personas en YouTube.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-crimson font-extrabold text-xl leading-none">✕</span>
+                            <span><strong>Un solo punto de disparo:</strong> subes el mismo video a una única cuenta esperando un golpe de suerte.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-crimson font-extrabold text-xl leading-none">✕</span>
+                            <span><strong>Costos fijos altos</strong> en agencias tradicionales que cobran por "diseño bonito" pero cero tráfico real.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Camino CLIPWAR (Ejército Maya) -->
+                <div class="bg-obsidian border-4 border-jade rounded-2xl p-8 shadow-hard-jade relative">
+                    <div class="flex items-center justify-between border-b-2 border-stone pb-4 mb-6">
+                        <span class="font-display text-3xl text-jade tracking-wider">LA DOCTRINA CLIPWAR</span>
+                        <span class="bg-jade text-obsidian text-xs font-extrabold px-3 py-1 rounded uppercase">Dominio Total</span>
+                    </div>
+                    <ul class="space-y-4 text-sm sm:text-base text-parchment">
+                        <li class="flex items-start gap-3">
+                            <span class="text-jade font-extrabold text-xl leading-none">✓</span>
+                            <span><strong>Ejército sincronizado de cliperos:</strong> múltiples editores ejecutando en lotes semanales bajo un mismo estándar de calidad.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-jade font-extrabold text-xl leading-none">✓</span>
+                            <span><strong>Versatilidad total x30:</strong> podcasts, streams, eventos, anuncios UGC, lanzamientos o educación convertidos en micro-piezas virales.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-jade font-extrabold text-xl leading-none">✓</span>
+                            <span><strong>Red de Cuentas Satélite:</strong> rodeamos tu nicho desde múltiples perfiles temáticos que dirigen atención hacia ti.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-jade font-extrabold text-xl leading-none">✓</span>
+                            <span><strong>Enfoque en conversión y ROI:</strong> cada clip lleva estructura estratégica para atraer clientes, seguidores o ventas.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: EL SISTEMA EN 3 PASOS (ESTELAS MAYAS) -->
+    <section id="como-funciona" class="py-20 bg-obsidian maya-grid-bg border-b-4 border-stone">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold uppercase tracking-[0.25em] text-jade bg-basalt px-4 py-1.5 rounded-full border border-jade">Arquitectura Operativa</span>
+                <h2 class="font-display text-5xl sm:text-6xl text-parchment mt-4 tracking-wide">EL RITUAL DEL <span class="text-gold">CLIPPING MASIVO</span></h2>
+                <p class="text-parchment/80 mt-3 text-base sm:text-lg">
+                    Operamos en lotes semanales para que tu marca publique a diario sin depender de un solo editor lento ni de tener suerte con un video.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Estela 01 -->
+                <div class="bg-basalt border-4 border-parchment rounded-2xl p-7 shadow-hard-jade relative group hover:-translate-y-1 transition-transform">
+                    <div class="w-14 h-14 bg-jade text-obsidian font-display text-3xl flex items-center justify-center rounded-xl border-2 border-obsidian mb-6 shadow-hard">
+                        01
+                    </div>
+                    <h3 class="font-heading font-extrabold text-2xl text-parchment mb-3">Extracción de Materia Prima</h3>
+                    <p class="text-parchment/80 text-sm leading-relaxed">
+                        Recibimos tu video largo, grabaciones desde celular o material de producto e identificamos los momentos con mayor fuerza comercial y gancho.
+                    </p>
+                    <div class="mt-6 pt-4 border-t-2 border-stone flex items-center justify-between text-xs font-bold text-jade uppercase">
+                        <span>Lunes de Ingesta</span>
+                        <span>➔ 15–30 Piezas Clave</span>
+                    </div>
+                </div>
+
+                <!-- Estela 02 -->
+                <div class="bg-basalt border-4 border-parchment rounded-2xl p-7 shadow-hard-gold relative group hover:-translate-y-1 transition-transform">
+                    <div class="w-14 h-14 bg-gold text-obsidian font-display text-3xl flex items-center justify-center rounded-xl border-2 border-obsidian mb-6 shadow-hard">
+                        02
+                    </div>
+                    <h3 class="font-heading font-extrabold text-2xl text-parchment mb-3">Forja en Lotes Semanales</h3>
+                    <p class="text-parchment/80 text-sm leading-relaxed">
+                        Nuestros cliperos editan bajo un estándar probado: ganchos visuales en 1.5 segundos, subtítulos dinámicos y ritmo optimizado para retención y conversión.
+                    </p>
+                    <div class="mt-6 pt-4 border-t-2 border-stone flex items-center justify-between text-xs font-bold text-gold uppercase">
+                        <span>Control de Calidad</span>
+                        <span>➔ Optimizado para Retención</span>
+                    </div>
+                </div>
+
+                <!-- Estela 03 -->
+                <div class="bg-basalt border-4 border-parchment rounded-2xl p-7 shadow-hard-terracotta relative group hover:-translate-y-1 transition-transform">
+                    <div class="w-14 h-14 bg-terracotta text-parchment font-display text-3xl flex items-center justify-center rounded-xl border-2 border-obsidian mb-6 shadow-hard">
+                        03
+                    </div>
+                    <h3 class="font-heading font-extrabold text-2xl text-parchment mb-3">Despliegue Multi-Canal</h3>
+                    <p class="text-parchment/80 text-sm leading-relaxed">
+                        Publicamos simultáneamente en tu canal principal y en nuestra red de cuentas satélite de nicho (finanzas, negocios, estilo de vida) dirigiendo tráfico directo a tu embudo.
+                    </p>
+                    <div class="mt-6 pt-4 border-t-2 border-stone flex items-center justify-between text-xs font-bold text-terracotta uppercase">
+                        <span>Omnipresencia</span>
+                        <span>➔ Clientes y Vistas</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN: PRODUCCIÓN PARA NEGOCIOS SIN PODCAST NI VIDEOS LARGOS -->
+    <section id="sin-podcast" class="py-20 bg-obsidian border-b-4 border-stone">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+                <div class="max-w-3xl">
+                    <span class="text-xs font-extrabold uppercase tracking-[0.25em] text-gold bg-basalt px-4 py-1.5 rounded-full border border-gold">Para Negocios y Marcas sin Estudio</span>
+                    <h2 class="font-display text-5xl sm:text-6xl text-parchment mt-4 leading-none">
+                        ¿SIN PODCAST, SIN CÁMARAS Y SIN TIEMPO? <span class="text-jade">IGUAL PUBLICAMOS 30+ CLIPS AL MES POR TI.</span>
+                    </h2>
+                    <p class="text-parchment/80 mt-3 text-base sm:text-lg">
+                        Diseñado para clínicas, inmobiliarias, e-commerce y servicios B2B en Guatemala, El Salvador y Honduras que quieren ventas y citas sin montar un estudio.
+                    </p>
+                </div>
+                <button type="button" onclick="openModal('marca', 'sin-podcast')" class="btn-slash shrink-0 px-6 py-4 bg-jade hover:bg-quetzal text-obsidian font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-xl border-2 border-obsidian shadow-hard-gold">
+                    Elegir Mi Modo de Producción ➔
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Modalidad 1 -->
+                <div class="bg-basalt border-4 border-jade rounded-2xl p-7 shadow-hard-jade flex flex-col justify-between">
+                    <div>
+                        <div class="inline-block bg-jade text-obsidian font-extrabold text-[11px] uppercase tracking-widest px-3 py-1 rounded mb-4">
+                            Modo 01 • 15 Min/Semana
+                        </div>
+                        <h3 class="font-heading font-extrabold text-2xl text-parchment mb-3">Guionado por WhatsApp + Celular</h3>
+                        <p class="text-sm text-parchment/80 leading-relaxed mb-5">
+                            Cada lunes te enviamos 5 preguntas estratégicas. Tú o tu equipo responden grabando 15 minutos con su teléfono y nuestro ejército saca 30+ clips con B-roll, subtítulos y ganchos.
+                        </p>
+                    </div>
+                    <button type="button" onclick="openModal('marca', 'sin-podcast')" class="w-full py-3 bg-obsidian hover:bg-stone text-jade font-bold text-xs uppercase tracking-wider rounded-xl border-2 border-jade transition-colors">
+                        Quiero Grabar 15 Min / Semana ➔
+                    </button>
+                </div>
+
+                <!-- Modalidad 2 -->
+                <div class="bg-basalt border-4 border-gold rounded-2xl p-7 shadow-hard-gold flex flex-col justify-between">
+                    <div>
+                        <div class="inline-block bg-gold text-obsidian font-extrabold text-[11px] uppercase tracking-widest px-3 py-1 rounded mb-4">
+                            Modo 02 • Ventas &amp; Pauta
+                        </div>
+                        <h3 class="font-heading font-extrabold text-2xl text-parchment mb-3">Producto, UGC y Creativos Ads</h3>
+                        <p class="text-sm text-parchment/80 leading-relaxed mb-5">
+                            Nos envías fotos, videos crudos de tu tienda/clínica/propiedad o demos rápidas. Editamos múltiples variaciones de ganchos para orgánico y anuncios ganadores en Meta/TikTok Ads.
+                        </p>
+                    </div>
+                    <button type="button" onclick="openModal('marca', 'ugc-lanzamientos')" class="w-full py-3 bg-obsidian hover:bg-stone text-gold font-bold text-xs uppercase tracking-wider rounded-xl border-2 border-gold transition-colors">
+                        Quiero Videos Para Mis Ads ➔
+                    </button>
+                </div>
+
+                <!-- Modalidad 3 -->
+                <div class="bg-basalt border-4 border-terracotta rounded-2xl p-7 shadow-hard-terracotta flex flex-col justify-between">
+                    <div>
+                        <div class="inline-block bg-terracotta text-parchment font-extrabold text-[11px] uppercase tracking-widest px-3 py-1 rounded mb-4">
+                            Modo 03 • Proyecto Especial
+                        </div>
+                        <h3 class="font-heading font-extrabold text-2xl text-parchment mb-3">Faceless (Sin Salir en Cámara)</h3>
+                        <p class="text-sm text-parchment/80 leading-relaxed mb-5">
+                            ¿No quieres aparecer frente a cámara? Cotizamos paquetes especiales con voz en off, recursos visuales de tu industria y edición dinámica orientada a llevar tráfico a tu WhatsApp.
+                        </p>
+                    </div>
+                    <button type="button" onclick="openModal('marca', 'faceless')" class="w-full py-3 bg-obsidian hover:bg-stone text-terracotta font-bold text-xs uppercase tracking-wider rounded-xl border-2 border-terracotta transition-colors">
+                        Consultar Modo Faceless ➔
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: CENTRO DE COMANDO 2D — VISTAS VERIFICADAS (ESTILO LUMINA) -->
+    <section id="dashboard" class="py-20 bg-basalt border-b-4 border-stone">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <!-- Columna Izquierda: Explicación -->
+                <div class="lg:col-span-5 space-y-5">
+                    <span class="text-xs font-extrabold uppercase tracking-[0.25em] text-jade bg-obsidian px-4 py-1.5 rounded-full border border-jade">Transparencia Total</span>
+                    <h2 class="font-display text-5xl sm:text-6xl text-parchment leading-none">
+                        CERO MÉTRICAS INFLADAS. <span class="text-gold">VISTAS VERIFICADAS.</span>
+                    </h2>
+                    <p class="text-parchment/80 text-base leading-relaxed">
+                        Igual que las mejores redes de clipping internacionales, auditamos cada clip publicado en TikTok, Reels y Shorts para que veas exactamente qué formatos te traen retención y mensajes a WhatsApp.
+                    </p>
+                    <ul class="space-y-3 text-sm text-parchment/90 font-semibold">
+                        <li class="flex items-start gap-3">
+                            <span class="text-jade font-extrabold">✓</span>
+                            <span>Auditoría semanal de vistas orgánicas reales (sin bots).</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-jade font-extrabold">✓</span>
+                            <span>Identificación de los 3–6 clips ganadores para pautar en Ads.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-jade font-extrabold">✓</span>
+                            <span>Reporte ejecutivo mensual listo para gerencia.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Columna Derecha: Mockup 2D de Dashboard de Campaña -->
+                <div class="lg:col-span-7">
+                    <div class="bg-obsidian border-4 border-parchment rounded-2xl p-5 sm:p-7 shadow-hard-jade">
+                        <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-stone pb-4 mb-5">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-jade animate-pulse"></span>
+                                <span class="font-mono text-xs font-bold text-parchment uppercase tracking-widest">ORÁCULO CLIPWAR • CAMPAÑA ACTIVA</span>
+                            </div>
+                            <span class="bg-basalt border border-gold text-gold text-[10px] font-extrabold px-2.5 py-1 rounded uppercase">GT • SV • HN</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                            <div class="bg-basalt border-2 border-stone rounded-xl p-3.5">
+                                <div class="text-[10px] uppercase tracking-wider text-parchment/60 font-bold">Vistas Verificadas</div>
+                                <div class="font-display text-3xl text-jade mt-1">1,240,800</div>
+                            </div>
+                            <div class="bg-basalt border-2 border-stone rounded-xl p-3.5">
+                                <div class="text-[10px] uppercase tracking-wider text-parchment/60 font-bold">Clips Publicados</div>
+                                <div class="font-display text-3xl text-gold mt-1">60 / 60</div>
+                            </div>
+                            <div class="bg-basalt border-2 border-stone rounded-xl p-3.5">
+                                <div class="text-[10px] uppercase tracking-wider text-parchment/60 font-bold">Retención Prom.</div>
+                                <div class="font-display text-3xl text-parchment mt-1">64.2%</div>
+                            </div>
+                            <div class="bg-basalt border-2 border-stone rounded-xl p-3.5">
+                                <div class="text-[10px] uppercase tracking-wider text-parchment/60 font-bold">Clics WhatsApp</div>
+                                <div class="font-display text-3xl text-terracotta mt-1">+18,450</div>
+                            </div>
+                        </div>
+
+                        <!-- Barras por plataforma -->
+                        <div class="space-y-3 bg-basalt border-2 border-stone rounded-xl p-4">
+                            <div class="text-xs font-extrabold uppercase tracking-wider text-parchment/80 mb-2">Distribución por Plataforma</div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-parchment">TikTok (Alcance Viral)</span>
+                                    <span class="text-jade">620K vistas</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-obsidian rounded-full overflow-hidden">
+                                    <div class="h-full bg-jade w-[74%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-parchment">Instagram Reels (Conversión)</span>
+                                    <span class="text-gold">410K vistas</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-obsidian rounded-full overflow-hidden">
+                                    <div class="h-full bg-gold w-[56%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-parchment">YouTube Shorts (Evergreen)</span>
+                                    <span class="text-terracotta">210K vistas</span>
+                                </div>
+                                <div class="w-full h-2.5 bg-obsidian rounded-full overflow-hidden">
+                                    <div class="h-full bg-terracotta w-[35%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: ANATOMÍA DE UN CLIP VIRAL (ESTÁNDAR DE EDICIÓN 2D) -->
+    <section id="anatomia" class="py-20 bg-basalt border-b-4 border-stone">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Izquierda: Mockup Visual de Teléfono 9:16 con Capas de Retención -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-xs bg-obsidian border-4 border-parchment rounded-[2rem] p-4 shadow-hard-gold relative">
+                        <!-- Barra superior tipo reproductor vertical -->
+                        <div class="flex items-center justify-between text-[10px] font-mono text-parchment/70 mb-3 px-1">
+                            <span>9:16 VERTICAL • 60FPS</span>
+                            <span class="text-jade font-bold">● HOOK ACTIVADO</span>
+                        </div>
+
+                        <!-- Pantalla simulada 2D -->
+                        <div class="relative h-96 bg-gradient-to-b from-stone via-obsidian to-crimson/40 rounded-2xl border-2 border-stone overflow-hidden flex flex-col justify-between p-4">
+                            <!-- Zona 1: Gancho Visual/Textual (0:00 - 0:02) -->
+                            <div class="bg-gold text-obsidian font-display text-2xl leading-none px-3 py-2 rounded-lg border-2 border-obsidian shadow-hard text-center transform -rotate-1">
+                                "EL ERROR QUE TE CUESTA $2,000 AL MES..."
+                            </div>
+
+                            <!-- Zona Central: Ilustración silueta hablante + ondas de audio -->
+                            <div class="my-auto flex flex-col items-center">
+                                <div class="w-24 h-24 rounded-full bg-terracotta border-4 border-parchment flex items-center justify-center mb-3">
+                                    <svg class="w-12 h-12 text-obsidian" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 14.2 14.47 16 12 16s-4.52-1.8-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V20c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/>
+                                    </svg>
+                                </div>
+                                <!-- Subtítulos dinámicos estilo Hormozi / ClipWar -->
+                                <div class="bg-obsidian/95 px-3 py-1.5 rounded border-2 border-jade text-center">
+                                    <span class="font-heading font-extrabold text-sm text-parchment">SI NO HACES </span>
+                                    <span class="font-heading font-extrabold text-sm text-jade">ESTO HOY</span>
+                                </div>
+                            </div>
+
+                            <!-- Zona 3: Barra de progreso y CTA -->
+                            <div class="space-y-2">
+                                <div class="flex justify-between items-center text-[11px] font-bold text-parchment">
+                                    <span>@clipwar.negocios</span>
+                                    <span class="bg-terracotta px-2 py-0.5 rounded text-[10px]">COMENTA "GUÍA"</span>
+                                </div>
+                                <div class="w-full h-2 bg-obsidian rounded-full overflow-hidden">
+                                    <div class="w-3/4 h-full bg-jade"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Derecha: Explicación de las 4 Capas de Ingeniería Viral -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-xs font-extrabold uppercase tracking-[0.25em] text-gold bg-obsidian px-4 py-1.5 rounded-full border border-gold">Ingeniería de Retención</span>
+                    <h2 class="font-display text-5xl sm:text-6xl text-parchment leading-none">NO CORTAMOS AL AZAR. <span class="text-jade">FORJAMOS ATENCIÓN.</span></h2>
+                    <p class="text-parchment/80 text-base sm:text-lg">
+                        Cada clipero en nuestra red domina nuestra fórmula de 4 capas para producir cualquier estilo o formato solicitado antes de tocar el material de un cliente:
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div class="bg-obsidian border-2 border-stone p-5 rounded-xl">
+                            <div class="text-gold font-display text-2xl mb-1">01. EL GANCHO DE OBSIDIANA</div>
+                            <p class="text-xs sm:text-sm text-parchment/75">Titular de alto impacto en los primeros 1.5 segundos + cambio de plano inmediato para evitar que el usuario deslice.</p>
+                        </div>
+                        <div class="bg-obsidian border-2 border-stone p-5 rounded-xl">
+                            <div class="text-jade font-display text-2xl mb-1">02. RITMO DE CORTE RÁPIDO</div>
+                            <p class="text-xs sm:text-sm text-parchment/75">Eliminación quirúrgica de silencios, muletillas y pausas. Micro-zooms y recursos visuales cada 3 a 4 segundos.</p>
+                        </div>
+                        <div class="bg-obsidian border-2 border-stone p-5 rounded-xl">
+                            <div class="text-terracotta font-display text-2xl mb-1">03. SUBTÍTULOS CINÉTICOS</div>
+                            <p class="text-xs sm:text-sm text-parchment/75">Tipografía de alto contraste sincronizada palabra por palabra para capturar al 65% de usuarios que ven videos sin sonido.</p>
+                        </div>
+                        <div class="bg-obsidian border-2 border-stone p-5 rounded-xl">
+                            <div class="text-parchment font-display text-2xl mb-1">04. LLAMADA A LA ACCIÓN (CTA)</div>
+                            <p class="text-xs sm:text-sm text-parchment/75">Cierre diseñado para provocar comentarios, guardados o visitas directas al enlace de tu biografía o WhatsApp.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN: FORMATOS Y NICHOS DE ALTO RENDIMIENTO -->
+    <section class="py-20 bg-obsidian maya-grid-bg border-b-4 border-stone">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="text-xs font-extrabold uppercase tracking-[0.25em] text-jade bg-basalt px-4 py-1.5 rounded-full border border-jade">Territorios de Conquista</span>
+                <h2 class="font-display text-5xl sm:text-6xl text-parchment mt-4">FORMATOS Y NICHOS DONDE <span class="text-gold">DOMINAMOS LA CONVERSACIÓN</span></h2>
+                <p class="text-parchment/80 mt-3 text-base">
+                    Nuestro ejército se adapta a cualquier contenido solicitado: podcasts, streams, eventos, anuncios UGC, lanzamientos o cápsulas educativas.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-basalt border-2 border-parchment p-6 rounded-2xl hover:border-jade transition-colors">
+                    <div class="w-12 h-12 bg-jade/20 border-2 border-jade rounded-xl flex items-center justify-center text-jade font-display text-2xl mb-4">01</div>
+                    <h3 class="font-heading font-extrabold text-xl text-parchment mb-2">Podcasts &amp; Streams</h3>
+                    <p class="text-xs text-parchment/75 leading-relaxed">Convertimos episodios largos, entrevistas y transmisiones en vivo en decenas de clips virales diarios.</p>
+                </div>
+
+                <div class="bg-basalt border-2 border-parchment p-6 rounded-2xl hover:border-gold transition-colors">
+                    <div class="w-12 h-12 bg-gold/20 border-2 border-gold rounded-xl flex items-center justify-center text-gold font-display text-2xl mb-4">02</div>
+                    <h3 class="font-heading font-extrabold text-xl text-parchment mb-2">Eventos &amp; Lanzamientos</h3>
+                    <p class="text-xs text-parchment/75 leading-relaxed">Recaps dinámicos, momentos clave de conferencias, activaciones de marca y campañas de lanzamiento en tiempo récord.</p>
+                </div>
+
+                <div class="bg-basalt border-2 border-parchment p-6 rounded-2xl hover:border-terracotta transition-colors">
+                    <div class="w-12 h-12 bg-terracotta/20 border-2 border-terracotta rounded-xl flex items-center justify-center text-terracotta font-display text-2xl mb-4">03</div>
+                    <h3 class="font-heading font-extrabold text-xl text-parchment mb-2">Anuncios UGC &amp; E-Commerce</h3>
+                    <p class="text-xs text-parchment/75 leading-relaxed">Demostraciones de producto, variaciones de hooks para pauta y contenido nativo que reduce tu costo por adquisición.</p>
+                </div>
+
+                <div class="bg-basalt border-2 border-parchment p-6 rounded-2xl hover:border-jade transition-colors">
+                    <div class="w-12 h-12 bg-jade/20 border-2 border-jade rounded-xl flex items-center justify-center text-jade font-display text-2xl mb-4">04</div>
+                    <h3 class="font-heading font-extrabold text-xl text-parchment mb-2">Educación &amp; Servicios B2B</h3>
+                    <p class="text-xs text-parchment/75 leading-relaxed">Clínicas, bienes raíces, academias y especialistas posicionándose como autoridad mediante cápsulas claras y persuasivas.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN: PLANES Y PAQUETES B2B -->
+    <section id="paquetes" class="py-20 bg-basalt border-b-4 border-stone">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold uppercase tracking-[0.25em] text-gold bg-obsidian px-4 py-1.5 rounded-full border border-gold">Escuadrones Disponibles</span>
+                <h2 class="font-display text-5xl sm:text-6xl text-parchment mt-4">ELIGE TU <span class="text-jade">FUERZA DE DESPLIEGUE</span></h2>
+                <p class="text-parchment/80 mt-3 text-base">
+                    Producción estandarizada en lotes semanales con revisión de calidad, ganchos optimizados y programación lista para atraer clientes.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                <!-- Plan 1: Escuadrón Mensual (Core) -->
+                <div class="bg-obsidian border-4 border-stone rounded-2xl p-8 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-parchment/60">Nivel 01 • Core Negocios</span>
+                        <h3 class="font-display text-4xl text-parchment mt-1">ESCUADRÓN MENSUAL</h3>
+                        <div class="my-5 pb-5 border-b-2 border-stone">
+                            <span class="font-display text-5xl text-jade">30 CLIPS / MES</span>
+                            <span class="text-sm font-extrabold text-gold block mt-1">$550 USD / mes</span>
+                            <span class="text-xs font-bold text-parchment/70 block mt-0.5">2 lotes quincenales de 15 clips • TikTok, Reels y Shorts</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-parchment/85 mb-8">
+                            <li>✓ Hasta 4h/mes de material crudo o guionado x WhatsApp</li>
+                            <li>✓ Programación en tu cuenta principal incluida</li>
+                            <li>✓ 3 clips ganadores listos para Meta/TikTok Ads</li>
+                            <li>✓ Supervisor de calidad + Reporte mensual</li>
+                        </ul>
+                    </div>
+                    <button type="button" onclick="openModal('marca', 'escuadron')" class="w-full py-3.5 bg-basalt hover:bg-stone text-parchment font-heading font-extrabold text-sm uppercase tracking-wider rounded-xl border-2 border-parchment transition-colors">
+                        Empezar con Escuadrón ($550)
+                    </button>
+                </div>
+
+                <!-- Plan 2: Legión Pro (Más Popular) -->
+                <div class="bg-obsidian border-4 border-jade rounded-2xl p-8 shadow-hard-jade flex flex-col justify-between relative lg:-translate-y-3">
+                    <div class="absolute -top-4 right-6 bg-jade text-obsidian font-extrabold text-xs uppercase tracking-widest px-3 py-1 rounded border-2 border-obsidian">
+                        Más Elegido
+                    </div>
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-jade">Nivel 02 • Escala Comercial</span>
+                        <h3 class="font-display text-4xl text-parchment mt-1">LEGIÓN PRO</h3>
+                        <div class="my-5 pb-5 border-b-2 border-stone">
+                            <span class="font-display text-5xl text-gold">60 CLIPS / MES</span>
+                            <span class="text-sm font-extrabold text-jade block mt-1">$990 USD / mes</span>
+                            <span class="text-xs font-bold text-parchment/70 block mt-0.5">Lotes semanales de 15 clips + Pruebas A/B de ganchos</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-parchment mb-8">
+                            <li>✓ Hasta 8h/mes de video crudo o guion semanal</li>
+                            <li>✓ Pruebas A/B de ganchos en los 10 mejores clips</li>
+                            <li>✓ 2 Cliperos activos + Supervisor de calidad</li>
+                            <li>✓ Programación diaria en TikTok, Reels y Shorts</li>
+                            <li>✓ 6 clips listos para pauta en Meta/TikTok Ads</li>
+                        </ul>
+                    </div>
+                    <button type="button" onclick="openModal('marca', 'legion')" class="btn-slash w-full py-4 bg-jade hover:bg-quetzal text-obsidian font-heading font-extrabold text-sm uppercase tracking-wider rounded-xl border-2 border-obsidian shadow-hard">
+                        Elegir Legión Pro ($990)
+                    </button>
+                </div>
+
+                <!-- Plan 3: Imperio + Satélites (Add-on / Medida) -->
+                <div class="bg-obsidian border-4 border-terracotta rounded-2xl p-8 shadow-hard-terracotta flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-terracotta">Nivel 03 • Red Satélite / Medida</span>
+                        <h3 class="font-display text-4xl text-parchment mt-1">IMPERIO + SATÉLITES</h3>
+                        <div class="my-5 pb-5 border-b-2 border-stone">
+                            <span class="font-display text-5xl text-terracotta">60+ CLIPS</span>
+                            <span class="text-sm font-extrabold text-gold block mt-1">Desde $1,340 USD / mes</span>
+                            <span class="text-xs font-bold text-parchment/70 block mt-0.5">Incluye Add-on de 2+ Cuentas Satélite (+$350/mes)</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-parchment/85 mb-8">
+                            <li>✓ <strong>Creación y manejo de 2+ cuentas satélite</strong></li>
+                            <li>✓ Protocolo anti-shadowban y variación de ganchos</li>
+                            <li>✓ Cobertura de eventos, lanzamientos o Faceless</li>
+                            <li>✓ Estrategia quincenal con dirección creativa</li>
+                            <li>✓ Reporte ejecutivo de alcance y leads</li>
+                        </ul>
+                    </div>
+                    <button type="button" onclick="openModal('marca', 'imperio')" class="w-full py-3.5 bg-terracotta hover:bg-crimson text-parchment font-heading font-extrabold text-sm uppercase tracking-wider rounded-xl border-2 border-parchment transition-colors">
+                        Agendar Plan Imperio
+                    </button>
+                </div>
+            </div>
+
+            <!-- Ofertas Especiales: Sprint Piloto + Campaña por Vistas (Modelo Híbrido) -->
+            <div class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-obsidian border-2 border-gold rounded-2xl p-6 sm:p-8 flex flex-col justify-between gap-5 shadow-hard-gold">
+                    <div>
+                        <span class="inline-block bg-gold text-obsidian text-[11px] font-extrabold uppercase tracking-widest px-3 py-1 rounded mb-2">Prueba Sin Riesgo • Pago Único $249 USD</span>
+                        <h3 class="font-display text-3xl text-parchment">SPRINT PILOTO <span class="text-gold">14 DÍAS</span></h3>
+                        <p class="text-sm text-parchment/80 mt-1">12 clips estándar de 4 capas listos en 7–10 días para validar calidad, retención y respuesta en WhatsApp antes del plan mensual.</p>
+                    </div>
+                    <button type="button" onclick="openModal('marca', 'piloto')" class="btn-slash w-full sm:w-auto px-6 py-3.5 bg-gold hover:bg-yellow-400 text-obsidian font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-xl border-2 border-obsidian shadow-hard">
+                        Probar 14 Días por $249
+                    </button>
+                </div>
+
+                <div class="bg-obsidian border-2 border-jade rounded-2xl p-6 sm:p-8 flex flex-col justify-between gap-5 shadow-hard-jade">
+                    <div>
+                        <span class="inline-block bg-jade text-obsidian text-[11px] font-extrabold uppercase tracking-widest px-3 py-1 rounded mb-2">Modelo Performance • Marcas &amp; Lanzamientos</span>
+                        <h3 class="font-display text-3xl text-parchment">CAMPAÑA POR <span class="text-jade">VISTAS VERIFICADAS (CPM)</span></h3>
+                        <p class="text-sm text-parchment/80 mt-1">Ideal para lanzamientos, eventos o marcas de consumo masivo: paga por volumen de vistas orgánicas verificadas distribuidas por toda nuestra red.</p>
+                    </div>
+                    <button type="button" onclick="openModal('marca', 'cpm')" class="btn-slash w-full sm:w-auto px-6 py-3.5 bg-jade hover:bg-quetzal text-obsidian font-heading font-extrabold text-xs sm:text-sm uppercase tracking-wider rounded-xl border-2 border-obsidian shadow-hard">
+                        Cotizar Campaña por Vistas (CPM)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: RECLUTAMIENTO DE CLIPEROS -->
+    <section id="servicios" class="py-20 bg-basalt border-b-4 border-stone">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="cliperos" class="bg-obsidian border-4 border-gold rounded-2xl p-8 sm:p-10 shadow-hard-gold flex flex-col justify-between">
+                <div>
+                    <div class="inline-block bg-gold text-obsidian font-extrabold text-xs uppercase tracking-widest px-3 py-1 rounded mb-4">
+                        Para Editores y Creadores de Clips (GT • SV • HN)
+                    </div>
+                    <h3 class="font-display text-4xl sm:text-5xl text-parchment tracking-wide mb-4">
+                        ÚNETE AL EJÉRCITO Y MONETIZA TU EDICIÓN
+                    </h3>
+                    <p class="text-parchment/80 text-base mb-6">
+                        Deja de buscar clientes por tu cuenta. En CLIPWAR te entregamos el material en bruto, las guías de estilo y te pagamos por lote aprobado más bonos por hitos de vistas.
+                    </p>
+
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-semibold text-parchment/90 mb-8">
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold font-extrabold text-lg leading-none">✦</span>
+                            <span><strong>Pago base asegurado</strong> por lote semanal aprobado en QA.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold font-extrabold text-lg leading-none">✦</span>
+                            <span><strong>Bonos por hitos:</strong> gana extra al superar 50K, 150K o 500K vistas.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold font-extrabold text-lg leading-none">✦</span>
+                            <span><strong>Material listo para cortar:</strong> carpetas organizadas de marcas reales.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-gold font-extrabold text-lg leading-none">✦</span>
+                            <span><strong>Trabajo 100% remoto</strong> desde Guatemala, El Salvador o Honduras.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <button type="button" onclick="openModal('clipero')" class="btn-slash w-full py-4 bg-gold hover:bg-yellow-400 text-obsidian font-heading font-extrabold text-base uppercase tracking-wider rounded-xl border-2 border-obsidian shadow-hard transition-transform active:translate-y-0.5">
+                    Aplicar como Clipero Oficial
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: SIMULADOR INTERACTIVO DE IMPACTO / GANANCIAS -->
+    <section id="simulador" class="py-20 bg-obsidian maya-grid-bg border-b-4 border-stone">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-basalt border-4 border-parchment rounded-2xl p-6 sm:p-10 shadow-hard-terracotta">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b-2 border-stone pb-6 mb-8">
+                    <div>
+                        <span class="text-xs font-extrabold uppercase tracking-widest text-terracotta">Oráculo de Métricas</span>
+                        <h2 class="font-display text-4xl sm:text-5xl text-parchment mt-1">SIMULADOR DE ALCANCE Y BONOS</h2>
+                    </div>
+                    <!-- Selector de Rol -->
+                    <div class="inline-flex bg-obsidian p-1.5 rounded-xl border-2 border-stone" role="tablist" aria-label="Modo del simulador">
+                        <button type="button" role="tab" aria-selected="true" id="tab-marca" onclick="switchSimulator('marca')" class="px-4 py-2 rounded-lg text-xs font-extrabold uppercase tracking-wider bg-jade text-obsidian transition-all">
+                            Soy Marca / Creador
+                        </button>
+                        <button type="button" role="tab" aria-selected="false" id="tab-clipero" onclick="switchSimulator('clipero')" class="px-4 py-2 rounded-lg text-xs font-extrabold uppercase tracking-wider text-parchment/70 hover:text-parchment transition-all">
+                            Soy Clipero
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Controles del Simulador -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between font-bold text-sm mb-2">
+                                <label for="range-clips" id="slider-label-1" class="text-parchment">Clips publicados al mes:</label>
+                                <span id="slider-val-1" class="text-jade font-display text-2xl">60 CLIPS</span>
+                            </div>
+                            <input id="range-clips" type="range" min="15" max="180" step="15" value="60" oninput="updateSimulator()" class="w-full accent-jade cursor-pointer h-3 bg-obsidian rounded-lg">
+                            <div class="flex justify-between text-[11px] text-parchment/50 font-bold mt-1">
+                                <span>15 clips</span>
+                                <span>90 clips</span>
+                                <span>180 clips</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between font-bold text-sm mb-2">
+                                <label for="range-views" id="slider-label-2" class="text-parchment">Promedio de vistas por clip:</label>
+                                <span id="slider-val-2" class="text-gold font-display text-2xl">15,000 VISTAS</span>
+                            </div>
+                            <input id="range-views" type="range" min="5000" max="100000" step="5000" value="15000" oninput="updateSimulator()" class="w-full accent-gold cursor-pointer h-3 bg-obsidian rounded-lg">
+                            <div class="flex justify-between text-[11px] text-parchment/50 font-bold mt-1">
+                                <span>5K (Conservador)</span>
+                                <span>50K (Viral)</span>
+                                <span>100K+ (Hit)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resultado Proyectado -->
+                    <div class="bg-obsidian border-4 border-jade rounded-2xl p-6 text-center space-y-4">
+                        <div class="text-xs font-extrabold uppercase tracking-widest text-parchment/70" id="result-subtitle">
+                            Impresiones Orgánicas Estimadas / Mes
+                        </div>
+                        <div id="result-main" class="font-display text-5xl sm:text-6xl text-jade tracking-wide">
+                            900,000 VISTAS
+                        </div>
+                        <div class="bg-basalt border border-stone rounded-xl p-3">
+                            <div class="text-xs text-parchment/70 font-semibold" id="result-secondary-label">Tráfico potencial hacia tu embudo / perfil:</div>
+                            <div id="result-secondary" class="font-heading font-extrabold text-xl text-gold mt-0.5">+13,500 Visitas Calificadas</div>
+                        </div>
+                        <p id="sim-disclaimer" class="text-[11px] text-parchment/60 leading-snug">
+                            Valor equivalente estimado en Meta/TikTok Ads (~$1.80 CPM): ~$1,620 USD/mes.
+                        </p>
+                        <button type="button" onclick="triggerSimAction()" id="sim-cta-btn" class="w-full py-3 bg-terracotta hover:bg-crimson text-parchment font-bold text-xs uppercase tracking-widest rounded-xl border-2 border-parchment transition-colors">
+                            Activar este Plan Ahora
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN: PREGUNTAS FRECUENTES (FAQ DUAL INTERACTIVO) -->
+    <section id="faq" class="py-20 bg-basalt border-b-4 border-stone">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs font-extrabold uppercase tracking-[0.25em] text-jade bg-obsidian px-4 py-1.5 rounded-full border border-jade">Códice de Respuestas</span>
+                <h2 class="font-display text-5xl text-parchment mt-4">PREGUNTAS FRECUENTES</h2>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <details class="group bg-obsidian border-2 border-stone open:border-jade rounded-xl p-5 transition-colors">
+                    <summary class="flex items-center justify-between cursor-pointer font-heading font-bold text-base sm:text-lg text-parchment list-none">
+                        <span>¿De quién son las cuentas satélite que se crean para mi marca?</span>
+                        <span class="text-jade font-display text-2xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+                    </summary>
+                    <p class="mt-3 text-sm text-parchment/80 leading-relaxed border-t border-stone pt-3">
+                        <strong>100% tuyas.</strong> Todos los correos, accesos y cuentas creadas pertenecen legal y operativamente a tu marca desde el día uno. Nosotros las operamos mediante permisos de gestión y programación segura.
+                    </p>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details class="group bg-obsidian border-2 border-stone open:border-jade rounded-xl p-5 transition-colors">
+                    <summary class="flex items-center justify-between cursor-pointer font-heading font-bold text-base sm:text-lg text-parchment list-none">
+                        <span>¿Qué tipos de contenido puede producir el ejército de CLIPWAR?</span>
+                        <span class="text-jade font-display text-2xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+                    </summary>
+                    <p class="mt-3 text-sm text-parchment/80 leading-relaxed border-t border-stone pt-3">
+                        <strong>Cualquier formato corto que solicites.</strong> Podemos trabajar desde enlaces a tus podcasts, streams o videos de YouTube, hasta material crudo de eventos, lanzamientos, anuncios UGC para pauta o cápsulas educativas. Nuestro equipo extrae los mejores momentos, los edita y los adapta al estilo de tu marca.
+                    </p>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details class="group bg-obsidian border-2 border-stone open:border-gold rounded-xl p-5 transition-colors">
+                    <summary class="flex items-center justify-between cursor-pointer font-heading font-bold text-base sm:text-lg text-parchment list-none">
+                        <span>[Cliperos] ¿Qué requisitos necesito para entrar a la red CLIPWAR?</span>
+                        <span class="text-gold font-display text-2xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+                    </summary>
+                    <p class="mt-3 text-sm text-parchment/80 leading-relaxed border-t border-stone pt-3">
+                        Dominar CapCut (PC o móvil), Premiere Pro o DaVinci Resolve, tener conexión estable a internet y aprobar una prueba corta de edición siguiendo nuestro manual de ganchos y ritmo.
+                    </p>
+                </details>
+
+                <!-- FAQ 4 -->
+                <details class="group bg-obsidian border-2 border-stone open:border-gold rounded-xl p-5 transition-colors">
+                    <summary class="flex items-center justify-between cursor-pointer font-heading font-bold text-base sm:text-lg text-parchment list-none">
+                        <span>[Cliperos] ¿Cómo y cuándo se pagan los paquetes y los bonos virales?</span>
+                        <span class="text-gold font-display text-2xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+                    </summary>
+                    <p class="mt-3 text-sm text-parchment/80 leading-relaxed border-t border-stone pt-3">
+                        Liquidamos en un corte mensual consolidado vía transferencia bancaria local en <strong>Guatemala</strong> (GTQ), <strong>El Salvador</strong> (USD), <strong>Honduras</strong> (HNL) o mediante Binance / PayPal. Los bonos por hitos de vistas se acreditan tras auditar las métricas del cierre.
+                    </p>
+                </details>
+
+                <!-- FAQ 5 -->
+                <details class="group bg-obsidian border-2 border-stone open:border-jade rounded-xl p-5 transition-colors">
+                    <summary class="flex items-center justify-between cursor-pointer font-heading font-bold text-base sm:text-lg text-parchment list-none">
+                        <span>[Marcas] ¿Cómo evitan el shadowban en cuentas satélite y problemas de copyright?</span>
+                        <span class="text-jade font-display text-2xl group-open:rotate-45 transition-transform" aria-hidden="true">+</span>
+                    </summary>
+                    <p class="mt-3 text-sm text-parchment/80 leading-relaxed border-t border-stone pt-3">
+                        Cada cuenta satélite opera con variaciones únicas de gancho, ritmo de edición, metadatos limpios y periodo de calentamiento (<em>warm-up</em>) para evitar detección de contenido duplicado. Además, usamos exclusivamente audio autorizado o librerías comerciales libres de copyright.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: CIERRE ÉPICO CALL TO ACTION -->
+    <section class="py-20 bg-gradient-to-r from-crimson via-terracotta to-gold border-b-4 border-obsidian text-obsidian">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <span class="inline-block bg-obsidian text-gold font-extrabold text-xs uppercase tracking-[0.25em] px-4 py-1.5 rounded-lg">El Momento es Hoy</span>
+            <h2 class="font-display text-5xl sm:text-7xl text-parchment drop-shadow-[4px_4px_0px_#0D0C11] leading-none">
+                ¿LISTO PARA CONQUISTAR EL ALGORITMO?
+            </h2>
+            <p class="text-base sm:text-xl font-bold text-obsidian max-w-2xl mx-auto">
+                Ya sea que quieras llenar tu WhatsApp de clientes con lotes semanales de clips o unirte como editor a nuestro ejército en GT, SV y HN, tu lugar está en la forja.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+                <button type="button" onclick="openModal('marca', 'piloto')" class="btn-slash px-8 py-4 bg-obsidian hover:bg-basalt text-jade font-heading font-extrabold text-base uppercase tracking-wider rounded-xl border-4 border-parchment shadow-hard">
+                    Probar 14 Días por $249
+                </button>
+                <button type="button" onclick="openModal('clipero')" class="px-8 py-4 bg-parchment hover:bg-white text-obsidian font-heading font-extrabold text-base uppercase tracking-wider rounded-xl border-4 border-obsidian shadow-hard">
+                    Aplicar Como Clipero
+                </button>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-obsidian pt-12 pb-8 border-t-4 border-stone">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b-2 border-stone">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-jade border-2 border-parchment rounded-lg flex items-center justify-center font-display text-obsidian text-2xl">C</div>
+                    <div>
+                        <span class="font-display text-2xl tracking-wider text-parchment">CLIP<span class="text-jade">WAR</span></span>
+                        <p class="text-xs text-parchment/60">Triángulo Norte: Guatemala • El Salvador • Honduras | Red de Distribución Corta</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 text-xs font-bold uppercase tracking-wider text-parchment/70">
+                    <a href="#como-funciona" class="hover:text-jade">El Sistema</a>
+                    <a href="#servicios" class="hover:text-jade">Marcas B2B</a>
+                    <a href="#cliperos" class="hover:text-gold">Cliperos</a>
+                    <button type="button" onclick="openModal('marca')" class="hover:text-terracotta uppercase">Contacto</button>
+                </div>
+            </div>
+            <div class="pt-6 text-center text-xs text-parchment/50 font-semibold">
+                © 2026 CLIPWAR CENTROAMÉRICA (GT • SV • HN). Todos los derechos reservados. Estética inspirada en la tradición maya y animación 2D clásica.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE REGISTRO / CONTACTO -->
+    <div
+        id="lead-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-desc"
+        onclick="handleBackdropClick(event)"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-obsidian/85 backdrop-blur-sm p-4 overflow-y-auto"
+    >
+        <div class="bg-basalt border-4 border-parchment rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-hard-jade relative my-auto">
+            <button type="button" onclick="closeModal()" aria-label="Cerrar modal" class="absolute top-4 right-4 w-9 h-9 bg-obsidian text-parchment hover:bg-terracotta rounded-lg border-2 border-parchment font-bold flex items-center justify-center transition-colors">
+                ✕
+            </button>
+
+            <!-- Switch Modal -->
+            <div class="flex gap-2 mb-5 pr-10">
+                <button type="button" id="modal-tab-marca" onclick="setModalType('marca')" class="px-3 py-1.5 rounded-lg text-xs font-extrabold uppercase tracking-wider bg-jade text-obsidian border-2 border-obsidian">
+                    Soy Marca / Creador
+                </button>
+                <button type="button" id="modal-tab-clipero" onclick="setModalType('clipero')" class="px-3 py-1.5 rounded-lg text-xs font-extrabold uppercase tracking-wider bg-obsidian text-parchment border-2 border-stone">
+                    Quiero ser Clipero
+                </button>
+            </div>
+
+            <h3 id="modal-title" class="font-display text-4xl text-parchment tracking-wide">DESPLIEGA TU MARCA</h3>
+            <p id="modal-desc" class="text-sm text-parchment/80 mt-1 mb-5">
+                Déjanos tus datos y diseñaremos un plan de clips a la medida de tu negocio.
+            </p>
+
+            <form id="lead-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div>
+                    <label for="lead-name" class="block text-xs font-bold uppercase tracking-wider text-parchment/80 mb-1">Nombre o Marca *</label>
+                    <input id="lead-name" name="name" type="text" required placeholder="Ej. Carlos / Podcast Finanzas GT" class="w-full px-4 py-3 bg-obsidian border-2 border-stone focus:border-jade rounded-xl text-parchment text-sm outline-none">
+                </div>
+
+                <div>
+                    <label for="lead-contact" class="block text-xs font-bold uppercase tracking-wider text-parchment/80 mb-1">WhatsApp o Correo de Contacto *</label>
+                    <input id="lead-contact" name="contact" type="text" required placeholder="+502 5555-0000 o correo@ejemplo.com" class="w-full px-4 py-3 bg-obsidian border-2 border-stone focus:border-jade rounded-xl text-parchment text-sm outline-none">
+                </div>
+
+                <div id="select-field-container">
+                    <label for="modal-select-field" id="select-field-label" class="block text-xs font-bold uppercase tracking-wider text-parchment/80 mb-1">Tipo de contenido o plan de interés *</label>
+                    <select id="modal-select-field" name="selection" required class="w-full px-4 py-3 bg-obsidian border-2 border-stone focus:border-jade rounded-xl text-parchment text-sm outline-none">
+                        <!-- Opciones dinámicas según Marca o Clipero -->
+                    </select>
+                </div>
+
+                <div id="dynamic-field-container">
+                    <label for="dynamic-field-input" id="dynamic-field-label" class="block text-xs font-bold uppercase tracking-wider text-parchment/80 mb-1">Enlace a tu canal / red social principal</label>
+                    <input id="dynamic-field-input" name="link" type="text" placeholder="https://youtube.com/@tucanal" class="w-full px-4 py-3 bg-obsidian border-2 border-stone focus:border-jade rounded-xl text-parchment text-sm outline-none">
+                </div>
+
+                <button type="submit" id="modal-submit-btn" class="btn-slash w-full py-3.5 bg-jade hover:bg-quetzal text-obsidian font-heading font-extrabold text-sm uppercase tracking-wider rounded-xl border-2 border-obsidian shadow-hard mt-2">
+                    Enviar y Abrir WhatsApp ➔
+                </button>
+            </form>
+
+            <!-- Mensaje de Confirmación Integrado con Resumen + Fallback WhatsApp -->
+            <div id="form-success" class="hidden py-4 space-y-4">
+                <div class="text-center space-y-2">
+                    <div class="w-14 h-14 bg-jade text-obsidian rounded-2xl border-4 border-obsidian mx-auto flex items-center justify-center font-display text-3xl shadow-hard">
+                        ✓
+                    </div>
+                    <h4 class="font-display text-3xl text-jade">¡SOLICITUD REGISTRADA EN CLIPWAR!</h4>
+                    <p class="text-xs sm:text-sm text-parchment/80">
+                        Guardamos tu ficha de solicitud. Si deseas atención inmediata, envíala directo por WhatsApp con un clic:
+                    </p>
+                </div>
+
+                <!-- Resumen formateado -->
+                <div id="submission-summary" class="bg-obsidian border-2 border-stone rounded-xl p-4 text-xs space-y-1.5 text-parchment/90"></div>
+
+                <!-- Paso 2 automático para Cliperos -->
+                <div id="clipero-challenge-box" class="hidden bg-obsidian border-2 border-gold rounded-xl p-4 text-xs space-y-1.5">
+                    <div class="font-extrabold text-gold uppercase tracking-wider">Paso 2: Reto de Certificación (48h)</div>
+                    <p class="text-parchment/80 leading-relaxed">
+                        Al enviar tu mensaje por WhatsApp recibirás el enlace a nuestra carpeta de prueba (1 min de video crudo + manual de 4 capas). Aprueba el reto y entra al escuadrón activo.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 pt-1">
+                    <a id="whatsapp-fallback-link" href="#" target="_blank" rel="noopener noreferrer" class="btn-slash flex-1 py-3 px-4 bg-jade hover:bg-quetzal text-obsidian font-heading font-extrabold text-xs uppercase tracking-wider rounded-xl border-2 border-obsidian text-center shadow-hard">
+                        Enviar por WhatsApp ➔
+                    </a>
+                    <button type="button" onclick="closeModal()" class="py-3 px-5 bg-obsidian hover:bg-stone text-parchment border-2 border-parchment rounded-xl text-xs font-bold uppercase tracking-wider transition-colors">
+                        Volver a CLIPWAR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LÓGICA INTERACTIVA -->
+    <script>
+        // Configuración de integración (completar con tu número de WhatsApp o webhook real de Make/Zapier/n8n)
+        const CLIPWAR_WHATSAPP_NUMBER = ''; // Ej: '50255550000'
+        const CLIPWAR_WEBHOOK_URL = '';     // Ej: 'https://hook.us1.make.com/...'
+
+        const MODAL_SELECT_OPTIONS = {
+            marca: [
+                { value: 'piloto', label: 'Sprint Piloto 14 Días — 12 clips ($249 USD pago único)' },
+                { value: 'escuadron', label: 'Plan Escuadrón Mensual — 30 clips/mes ($550 USD)' },
+                { value: 'legion', label: 'Plan Legión Pro — 60 clips/mes ($990 USD)' },
+                { value: 'imperio', label: 'Plan Imperio + 2 Cuentas Satélite (Desde $1,340 USD)' },
+                { value: 'cpm', label: 'Campaña por Vistas Verificadas (Modelo CPM / Lanzamientos)' },
+                { value: 'sin-podcast', label: 'Negocio sin Podcast (Guion 15 min celular / WhatsApp)' },
+                { value: 'ugc-lanzamientos', label: 'Producto, UGC y Creativos para Meta/TikTok Ads' },
+                { value: 'faceless', label: 'Proyecto Especial: Faceless (Sin salir en cámara)' }
+            ],
+            clipero: [
+                { value: 'capcut', label: 'CapCut (PC / Móvil) — Edición ágil' },
+                { value: 'premiere', label: 'Adobe Premiere Pro' },
+                { value: 'davinci', label: 'DaVinci Resolve' },
+                { value: 'after-effects', label: 'After Effects / Motion Graphics' },
+                { value: 'esp-podcasts', label: 'Especialidad: Podcasts y Entrevistas' },
+                { value: 'esp-ugc', label: 'Especialidad: Anuncios UGC y Ritmo Viral' },
+                { value: 'esp-streams', label: 'Especialidad: Streams, Gaming y Eventos' }
+            ]
+        };
+
+        let currentSimMode = 'marca';
+        let currentModalMode = 'marca';
+        let lastFocusedElement = null;
+        let simContextNote = '';
+
+        // Menú Móvil
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const toggleBtn = document.getElementById('mobile-menu-toggle');
+            const iconOpen = document.getElementById('mobile-menu-icon-open');
+            const iconClose = document.getElementById('mobile-menu-icon-close');
+            const isHidden = menu.classList.contains('hidden');
+
+            menu.classList.toggle('hidden', !isHidden);
+            iconOpen.classList.toggle('hidden', isHidden);
+            iconClose.classList.toggle('hidden', !isHidden);
+            toggleBtn.setAttribute('aria-expanded', String(isHidden));
+            toggleBtn.setAttribute('aria-label', isHidden ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (!menu || menu.classList.contains('hidden')) return;
+            const toggleBtn = document.getElementById('mobile-menu-toggle');
+            document.getElementById('mobile-menu-icon-open').classList.remove('hidden');
+            document.getElementById('mobile-menu-icon-close').classList.add('hidden');
+            menu.classList.add('hidden');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            toggleBtn.setAttribute('aria-label', 'Abrir menú de navegación');
+        }
+
+        // Cambiar modo del simulador (Marca vs Clipero)
+        function switchSimulator(mode) {
+            currentSimMode = mode;
+            const tabMarca = document.getElementById('tab-marca');
+            const tabClipero = document.getElementById('tab-clipero');
+
+            if (mode === 'marca') {
+                tabMarca.className = 'px-4 py-2 rounded-lg text-xs font-extrabold uppercase tracking-wider bg-jade text-obsidian transition-all';
+                tabClipero.className = 'px-4 py-2 rounded-lg text-xs font-extrabold uppercase tracking-wider text-parchment/70 hover:text-parchment transition-all';
+                tabMarca.setAttribute('aria-selected', 'true');
+                tabClipero.setAttribute('aria-selected', 'false');
+                document.getElementById('slider-label-1').textContent = 'Clips publicados al mes:';
+                document.getElementById('result-subtitle').textContent = 'Impresiones Orgánicas Estimadas / Mes';
+                document.getElementById('result-secondary-label').textContent = 'Tráfico potencial hacia tu embudo / perfil:';
+                document.getElementById('sim-cta-btn').textContent = 'Contratar este Volumen de Clips';
+            } else {
+                tabClipero.className = 'px-4 py-2 rounded-lg text-xs font-extrabold uppercase tracking-wider bg-gold text-obsidian transition-all';
+                tabMarca.className = 'px-4 py-2 rounded-lg text-xs font-extrabold uppercase tracking-wider text-parchment/70 hover:text-parchment transition-all';
+                tabClipero.setAttribute('aria-selected', 'true');
+                tabMarca.setAttribute('aria-selected', 'false');
+                document.getElementById('slider-label-1').textContent = 'Clips editados por ti al mes:';
+                document.getElementById('result-subtitle').textContent = 'Ingreso Estimado (Base + Bonos por Vistas)';
+                document.getElementById('result-secondary-label').textContent = 'Vistas totales generadas con tu edición:';
+                document.getElementById('sim-cta-btn').textContent = 'Postularme para Ganar Esto';
+            }
+            updateSimulator();
+        }
+
+        // Actualizar cálculos en tiempo real
+        function updateSimulator() {
+            const clips = parseInt(document.getElementById('range-clips').value, 10);
+            const avgViews = parseInt(document.getElementById('range-views').value, 10);
+            const totalViews = clips * avgViews;
+
+            document.getElementById('slider-val-1').textContent = `${clips} CLIPS`;
+            document.getElementById('slider-val-2').textContent = `${avgViews.toLocaleString('es-GT')} VISTAS`;
+
+            if (currentSimMode === 'marca') {
+                document.getElementById('result-main').textContent = `${totalViews.toLocaleString('es-GT')} VISTAS`;
+                const profileClicks = Math.round(totalViews * 0.015);
+                const adEquivalentUSD = Math.round((totalViews / 1000) * 1.8);
+                document.getElementById('result-secondary').textContent = `+${profileClicks.toLocaleString('es-GT')} Visitas Calificadas`;
+                document.getElementById('sim-disclaimer').textContent = `Valor equivalente estimado en Meta/TikTok Ads (~$1.80 CPM): ~$${adEquivalentUSD.toLocaleString('es-GT')} USD/mes.`;
+            } else {
+                const basePayUSD = clips * 3.5;
+                // Bonos por hitos mensuales auditados (protege margen B2B)
+                let milestoneBonusUSD = 0;
+                if (totalViews >= 500000) milestoneBonusUSD = 55;
+                else if (totalViews >= 150000) milestoneBonusUSD = 20;
+                else if (totalViews >= 50000) milestoneBonusUSD = 5;
+                const totalUSD = Math.round(basePayUSD + milestoneBonusUSD);
+
+                document.getElementById('result-main').textContent = `$${totalUSD} USD / mes`;
+                document.getElementById('result-secondary').textContent = `${totalViews.toLocaleString('es-GT')} Vistas Acumuladas`;
+                document.getElementById('sim-disclaimer').textContent = 'Base $3.50/clip aprobado + bonos por hitos de vistas (50K / 150K / 500K). Pago mensual en GTQ, USD o HNL.';
+            }
+        }
+
+        function triggerSimAction() {
+            const clips = parseInt(document.getElementById('range-clips').value, 10);
+            const avgViews = parseInt(document.getElementById('range-views').value, 10);
+            simContextNote = `${clips} clips/mes @ ${avgViews.toLocaleString('es-GT')} vistas prom.`;
+
+            if (currentSimMode === 'marca') {
+                let suggestedPlan = 'escuadron';
+                if (clips > 75) suggestedPlan = 'imperio';
+                else if (clips > 30) suggestedPlan = 'legion';
+                openModal('marca', suggestedPlan);
+            } else {
+                openModal('clipero');
+            }
+        }
+
+        // Control del Modal
+        function openModal(type, preselect = '') {
+            lastFocusedElement = document.activeElement;
+            if (!preselect) simContextNote = '';
+
+            const modal = document.getElementById('lead-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('overflow-hidden');
+            document.getElementById('lead-form').classList.remove('hidden');
+            document.getElementById('form-success').classList.add('hidden');
+            setModalType(type, preselect);
+
+            setTimeout(() => {
+                document.getElementById('lead-name').focus();
+            }, 30);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('lead-modal');
+            if (modal.classList.contains('hidden')) return;
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.classList.remove('overflow-hidden');
+            if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+                lastFocusedElement.focus();
+            }
+        }
+
+        function handleBackdropClick(e) {
+            if (e.target === document.getElementById('lead-modal')) {
+                closeModal();
+            }
+        }
+
+        function populateModalSelect(type, preselect = '') {
+            const selectEl = document.getElementById('modal-select-field');
+            const options = MODAL_SELECT_OPTIONS[type] || MODAL_SELECT_OPTIONS.marca;
+            selectEl.innerHTML = '';
+
+            options.forEach((opt) => {
+                const optionEl = document.createElement('option');
+                optionEl.value = opt.value;
+                optionEl.textContent = opt.label;
+                selectEl.appendChild(optionEl);
+            });
+
+            if (preselect && options.some((opt) => opt.value === preselect)) {
+                selectEl.value = preselect;
+            }
+        }
+
+        function setModalType(type, preselect = '') {
+            currentModalMode = type;
+            const btnMarca = document.getElementById('modal-tab-marca');
+            const btnClipero = document.getElementById('modal-tab-clipero');
+            const title = document.getElementById('modal-title');
+            const desc = document.getElementById('modal-desc');
+            const selectLabel = document.getElementById('select-field-label');
+            const fieldLabel = document.getElementById('dynamic-field-label');
+            const fieldInput = document.getElementById('dynamic-field-input');
+            const submitBtn = document.getElementById('modal-submit-btn');
+
+            if (type === 'marca') {
+                btnMarca.className = 'px-3 py-1.5 rounded-lg text-xs font-extrabold uppercase tracking-wider bg-jade text-obsidian border-2 border-obsidian';
+                btnClipero.className = 'px-3 py-1.5 rounded-lg text-xs font-extrabold uppercase tracking-wider bg-obsidian text-parchment border-2 border-stone';
+                title.textContent = 'DESPLIEGA TU MARCA';
+                desc.textContent = 'Cuéntanos qué contenido necesitas desarrollar y te enviaremos una propuesta a la medida.';
+                selectLabel.textContent = 'Tipo de contenido o plan de interés *';
+                fieldLabel.textContent = 'Enlace a tu YouTube, Podcast o Instagram';
+                fieldInput.placeholder = 'https://instagram.com/tumarca';
+                submitBtn.className = 'btn-slash w-full py-3.5 bg-jade hover:bg-quetzal text-obsidian font-heading font-extrabold text-sm uppercase tracking-wider rounded-xl border-2 border-obsidian shadow-hard mt-2';
+            } else {
+                btnClipero.className = 'px-3 py-1.5 rounded-lg text-xs font-extrabold uppercase tracking-wider bg-gold text-obsidian border-2 border-obsidian';
+                btnMarca.className = 'px-3 py-1.5 rounded-lg text-xs font-extrabold uppercase tracking-wider bg-obsidian text-parchment border-2 border-stone';
+                title.textContent = 'ÚNETE COMO CLIPERO';
+                desc.textContent = 'Buscamos editores ágiles en CapCut, Premiere o DaVinci con hambre de resultados.';
+                selectLabel.textContent = 'Especialidad / Herramienta principal *';
+                fieldLabel.textContent = 'Portafolio o link a tus mejores clips editados';
+                fieldInput.placeholder = 'https://drive.google.com/... o @tutiktok';
+                submitBtn.className = 'btn-slash w-full py-3.5 bg-gold hover:bg-yellow-400 text-obsidian font-heading font-extrabold text-sm uppercase tracking-wider rounded-xl border-2 border-obsidian shadow-hard mt-2';
+            }
+
+            populateModalSelect(type, preselect);
+        }
+
+        function saveSubmissionLocally(payload) {
+            try {
+                const existing = JSON.parse(localStorage.getItem('clipwar_submissions') || '[]');
+                existing.push(payload);
+                localStorage.setItem('clipwar_submissions', JSON.stringify(existing));
+            } catch (err) {
+                console.warn('No se pudo guardar en localStorage:', err);
+            }
+        }
+
+        function dispatchWebhook(payload) {
+            if (!CLIPWAR_WEBHOOK_URL) return;
+            fetch(CLIPWAR_WEBHOOK_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).catch((err) => console.warn('Error enviando al webhook:', err));
+        }
+
+        function renderSubmissionSummary(payload) {
+            const summaryEl = document.getElementById('submission-summary');
+            const rows = [
+                { label: 'Perfil', value: payload.role === 'marca' ? 'Marca / Creador' : 'Clipero' },
+                { label: 'Nombre / Marca', value: payload.name },
+                { label: 'Contacto', value: payload.contact },
+                { label: payload.role === 'marca' ? 'Plan / Formato' : 'Especialidad', value: payload.selectionLabel },
+                { label: 'Enlace', value: payload.link || 'No proporcionado' }
+            ];
+            if (payload.simSnapshot) {
+                rows.push({ label: 'Simulador', value: payload.simSnapshot });
+            }
+
+            summaryEl.innerHTML = '';
+            rows.forEach((row) => {
+                const line = document.createElement('div');
+                line.className = 'flex justify-between gap-3 border-b border-stone/60 pb-1 last:border-b-0 last:pb-0';
+
+                const keySpan = document.createElement('span');
+                keySpan.className = 'text-parchment/60 font-bold uppercase';
+                keySpan.textContent = `${row.label}:`;
+
+                const valSpan = document.createElement('span');
+                valSpan.className = 'text-parchment font-semibold text-right break-all';
+                valSpan.textContent = row.value;
+
+                line.appendChild(keySpan);
+                line.appendChild(valSpan);
+                summaryEl.appendChild(line);
+            });
+
+            const waMessage = [
+                `Hola CLIPWAR, envío mi solicitud como ${payload.role === 'marca' ? 'Marca/Creador' : 'Clipero'}:`,
+                `• Nombre: ${payload.name}`,
+                `• Contacto: ${payload.contact}`,
+                `• ${payload.role === 'marca' ? 'Interés' : 'Especialidad'}: ${payload.selectionLabel}`,
+                payload.link ? `• Enlace: ${payload.link}` : null,
+                payload.simSnapshot ? `• Simulación: ${payload.simSnapshot}` : null
+            ].filter(Boolean).join('\n');
+
+            const waBase = CLIPWAR_WHATSAPP_NUMBER ? `https://wa.me/${CLIPWAR_WHATSAPP_NUMBER}` : 'https://wa.me/';
+            document.getElementById('whatsapp-fallback-link').href = `${waBase}?text=${encodeURIComponent(waMessage)}`;
+
+            const challengeBox = document.getElementById('clipero-challenge-box');
+            if (challengeBox) {
+                challengeBox.classList.toggle('hidden', payload.role !== 'clipero');
+            }
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const selectEl = document.getElementById('modal-select-field');
+            const selectedOption = selectEl.options[selectEl.selectedIndex];
+
+            const payload = {
+                role: currentModalMode,
+                name: document.getElementById('lead-name').value.trim(),
+                contact: document.getElementById('lead-contact').value.trim(),
+                selectionValue: selectEl.value,
+                selectionLabel: selectedOption ? selectedOption.textContent : '',
+                link: document.getElementById('dynamic-field-input').value.trim(),
+                simSnapshot: simContextNote,
+                submittedAt: new Date().toISOString()
+            };
+
+            saveSubmissionLocally(payload);
+            dispatchWebhook(payload);
+            renderSubmissionSummary(payload);
+
+            document.getElementById('lead-form').classList.add('hidden');
+            document.getElementById('form-success').classList.remove('hidden');
+            e.target.reset();
+        }
+
+        // Cerrar modal o menú móvil con tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+                closeMobileMenu();
+            }
+        });
+
+        // Inicializar valores del simulador
+        updateSimulator();
+    </script>
+</body>
+</html>
